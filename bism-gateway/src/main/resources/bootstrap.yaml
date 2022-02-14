@@ -1,0 +1,42 @@
+server:
+  port: 7080
+spring:
+  application:
+    name: bism-gateway
+  cloud:
+    consul:
+      host: 10.11.52.152
+      port: 8500
+      discovery:
+        register: true
+        service-name: ${spring.application.name}
+        prefer-ip-address: true
+        ip-address: ${spring.cloud.client.ip-address}
+        instance-id: ${spring.application.name}-01
+      config:
+        enabled: true
+        format: yaml
+        data-key: data
+        prefix: config
+        default-context: gateway
+        watch:
+          enabled: true
+          delay: 1000
+
+
+  main:
+    allow-bean-definition-overriding: true
+
+constant:
+  token:
+    authentication: Authorization
+    prefix: bearer
+    secret: nicaicaikanjjiushizheg
+
+
+#
+#  config/orderService/orderServiceConfig
+#  config/orderService-test/
+#  config/orderService-dev/
+#  config/orderService-prod/
+
