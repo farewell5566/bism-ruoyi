@@ -1,6 +1,8 @@
 package com.bism.auth.service;
 
 import com.bism.auth.form.LoginUser;
+import com.bism.common.core.constant.CacheConstants;
+import com.bism.common.core.constant.Constants;
 import com.bism.common.core.text.UUID;
 import com.bism.common.core.utils.ServletUtils;
 import com.bism.common.core.utils.ip.IpUtils;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Time;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class TokenService {
@@ -19,6 +22,12 @@ public class TokenService {
     private RedisService redisService;
 
     protected static final long MILLIS_SECOND = 1000;
+
+    protected static final long MILLIS_MINUTES = 60 * MILLIS_SECOND;
+
+    protected final static long expireTime = CacheConstants.EXPIRATION;
+
+    private final static String ACCESS_TOKEN = CacheConstants.LOGIN_TOKEN_KEY;
 
 
 
@@ -32,6 +41,10 @@ public class TokenService {
 
 
 
+
+    }
+
+    public void refreshToken(){
 
     }
 
@@ -51,9 +64,19 @@ public class TokenService {
 
     }
 
-    public void refresh(LoginUser){
-        Time time = System.currentTimeMillis();
+    public void refreshToken(LoginUser user){
+        long time = System.currentTimeMillis();
+        user.setLoginTime(System.currentTimeMillis());
+        user.setExpireTime(System.currentTimeMillis() + expireTime  * MILLIS_MINUTES);
+        String userKey = getTokenKey(user.getToken());
+        redisService.setCacheObject(userKey,user,expireTime, TimeUnit.MINUTES);
     }
+
+    private String getTokenKey(String token){
+        return ACCESS_TOKEN + token;
+    }
+
+
 
 
 
