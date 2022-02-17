@@ -19,10 +19,9 @@ import javax.annotation.Resource;
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
 
-    @Bean(name="redisTemplate")
+    @Bean(name = "redisTemplate")
     //@Resource
-    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory)
-    {
+    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<Object, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
 

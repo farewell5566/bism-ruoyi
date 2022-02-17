@@ -9,7 +9,7 @@ public class HttpStatus {
     public static final int ACCEPTED = 202;
 
     /**
-    操作成功但是没有数据
+     * 操作成功但是没有数据
      */
 
     public static final int NO_CONTENT = 204;
@@ -19,7 +19,7 @@ public class HttpStatus {
     public static final int SEE_OTHER = 303;
 
     /**
-    资源没有被修改
+     * 资源没有被修改
      */
     public static final int NOT_MODIFIED = 304;
 
@@ -67,7 +67,6 @@ public class HttpStatus {
      * 接口未实现
      */
     public static final int NOT_IMPLEMENTED = 501;
-
 
 
 }

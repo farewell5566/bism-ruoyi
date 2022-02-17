@@ -10,7 +10,7 @@ public class CacheConstants {
     /**
      * 缓存刷新时间120min
      */
-    public final static long PEFRESH_TIME =120;
+    public final static long PEFRESH_TIME = 120;
 
     /**
      * 权限缓存前缀

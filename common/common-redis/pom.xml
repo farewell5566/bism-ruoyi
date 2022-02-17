@@ -7,6 +7,7 @@
         <artifactId>common</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <groupId>com.bism</groupId>
     <artifactId>common-reids</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -30,11 +31,10 @@
         </dependency>
 
         <dependency>
-        <groupId>com.bism</groupId>
-        <artifactId>common-core</artifactId>
+            <groupId>com.bism</groupId>
+            <artifactId>common-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
 
 
         <!-- Alibaba Fastjson -->

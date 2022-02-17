@@ -20,6 +20,4 @@ public class SecurityConstants {
     public static final String LOGIN_USER = "login_user";
 
 
-
-
 }
