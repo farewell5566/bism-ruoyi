@@ -1,4 +1,4 @@
-package com.bism.comomsecurity.handler;
+package com.bism.comom.security.handler;
 
 import com.bism.common.core.exception.ServiceException;
 import com.bism.common.core.utils.StringUtils;

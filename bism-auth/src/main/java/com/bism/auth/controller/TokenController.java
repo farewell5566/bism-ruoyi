@@ -39,10 +39,9 @@ public class TokenController {
 
     @PostMapping("loginOut")
     public R<?> logOut(HttpServletRequest request){
+        String token =  tokenService.getToken(request);
         LoginUser loginUser = tokenService.getLoginUser(request);
         sysLoginService.loginOut(loginUser.getUsername());
-
-
         return R.ok();
     }
 
