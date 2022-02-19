@@ -10,8 +10,12 @@ import com.bism.common.core.constant.TokenConstants;
 import com.bism.common.core.domain.R;
 import com.bism.common.core.utils.JwtUtils;
 import com.bism.common.core.utils.StringUtils;
+import com.bism.comom.security.handler.auth.AuthUtils;
+import com.bism.comom.security.handler.utils.SecurityUtils;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
+import org.apache.catalina.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,10 +43,20 @@ public class TokenController {
 
     @PostMapping("loginOut")
     public R<?> logOut(HttpServletRequest request){
-        String token =  tokenService.getToken(request);
-        LoginUser loginUser = tokenService.getLoginUser(request);
-        sysLoginService.loginOut(loginUser.getUsername());
+        String token = SecurityUtils.getToken(request);
+        if (StringUtils.isNotEmpty(token)){
+            String username = JwtUtils.getUserName(token);
+            //String username = SecurityUtils.getUsername(token);
+            AuthUtils.logOutByToken(token);
+            sysLoginService.loginOut(token);
+        }
         return R.ok();
+
+
+//        String token =  tokenService.getToken(request);
+//        LoginUser loginUser = tokenService.getLoginUser(request);
+//        sysLoginService.loginOut(loginUser.getUsername());
+
     }
 
     @PostMapping("refresh")
@@ -54,29 +68,28 @@ public class TokenController {
         }
 
         //temp
-        String token = request.getHeader(TokenConstants.AUTHENTICATION);
-        token = token.replaceFirst(TokenConstants.PREFIX,"");
-        //Claims claims = parseToken(token);
-        Claims claims1 = Jwts.parser().setSigningKey(TokenConstants.SECRET).parseClaimsJws(token).getBody();
-        String username = claims1.get(SecurityConstants.DETAILS_USERNAME).toString();
+//        String token = request.getHeader(TokenConstants.AUTHENTICATION);
+//        token = token.replaceFirst(TokenConstants.PREFIX,"");
+//        //Claims claims = parseToken(token);
+//        Claims claims1 = Jwts.parser().setSigningKey(TokenConstants.SECRET).parseClaimsJws(token).getBody();
+//        String username = claims1.get(SecurityConstants.DETAILS_USERNAME).toString();
+//
+//
+//        tokenService.delLoginUser(token);
+//
+//
+//
+//
+//        getValue(claims, SecurityConstants.DETAILS_USERNAME);
+//        String usernet = JwtUtils.getUserName(token);
 
-
-        tokenService.delLoginUser(token);
-
-
-
-
-        getValue(claims, SecurityConstants.DETAILS_USERNAME);
-        String usernet = JwtUtils.getUserName(token);
-
-
-
-
-        return R.ok();
 
 
 
         return R.ok();
+
+
+
     }
 
 

@@ -39,6 +39,8 @@ public class TokenService {
         user.setIpaddr(IpUtils.getIpAddr(ServletUtils.getRequest()));
         refreshToken(user);
 
+        return null;
+
 
 
 
@@ -49,10 +51,12 @@ public class TokenService {
     }
 
     public LoginUser getLoginUser(HttpServletRequest request){
+        return null;
 
     }
 
     public LoginUser getLoginUser(String token){
+        return null;
 
     }
 

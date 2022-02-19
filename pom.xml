@@ -15,9 +15,11 @@
     <description>Demo project for Spring Boot</description>
 
     <modules>
-        <module></module>
+        <module>bism-auth</module>
         <module>bism-gateway</module>
-
+        <module>common</module>
+        <module>xctest</module>
+        <module>bism-api-system</module>
     </modules>
 
 
