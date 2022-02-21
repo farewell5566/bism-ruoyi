@@ -1,9 +1,10 @@
 package com.bism.system.api.domain;
 
-import com.bism.system.api.entity.baseEntity;
+import com.bism.system.api.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class SysLoginInfo extends baseEntity {
+
+public class SysLoginInfo extends BaseEntity {
 
     private int status;
 

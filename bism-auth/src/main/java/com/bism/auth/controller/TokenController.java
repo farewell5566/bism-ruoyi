@@ -1,29 +1,21 @@
 package com.bism.auth.controller;
 
 import com.bism.auth.form.LoginBody;
-import com.bism.auth.form.LoginUser;
 import com.bism.auth.form.RegisterBody;
 import com.bism.auth.service.SysLoginService;
 import com.bism.auth.service.TokenService;
-import com.bism.common.core.constant.SecurityConstants;
-import com.bism.common.core.constant.TokenConstants;
 import com.bism.common.core.domain.R;
 import com.bism.common.core.utils.JwtUtils;
 import com.bism.common.core.utils.StringUtils;
-import com.bism.comom.security.handler.auth.AuthUtils;
-import com.bism.comom.security.handler.utils.SecurityUtils;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
-import io.jsonwebtoken.Jwts;
-import org.apache.catalina.security.SecurityUtil;
+import com.bism.common.security.auth.AuthUtils;
+import com.bism.common.security.utils.SecurityUtils;
+import com.bism.system.api.model.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class TokenController {
