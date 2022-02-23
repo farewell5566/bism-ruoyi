@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.bism</groupId>
-    <artifactId>comom-security</artifactId>
+    <artifactId>common-security</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>comom-security</name>
+    <name>common-security</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
@@ -39,7 +39,6 @@
             <groupId>com.bism</groupId>
             <artifactId>bism-api-system</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
 
 

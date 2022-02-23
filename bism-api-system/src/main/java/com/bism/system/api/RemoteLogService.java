@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 @FeignClient(contextId = "remoteLogServcie",value = ServiceNameConstants.SYSTEM_SERVICE,fallbackFactory = RemoteLogFallbackFactory.class)
 public interface RemoteLogService {
 
-
     @PostMapping("/operlog")
     public R<Boolean> saveLog(@RequestBody SysOperLog sysOperLog, @RequestHeader(SecurityConstants.FROM_SOURCE) String source);
 
