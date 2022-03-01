@@ -20,6 +20,7 @@
         <module>common</module>
         <module>xctest</module>
         <module>bism-api-system</module>
+        <module>bism-modules</module>
     </modules>
 
 
