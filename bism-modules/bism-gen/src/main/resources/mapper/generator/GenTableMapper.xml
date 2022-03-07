@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bism.gen.mapper.GenTableMapper">
+
+    <resultMap  type="GenTable" id = "GenTableResult">
+        <id property="tableId" column="table_id"/>
+        <result property="table_name" column="table_id"/>
+        <result property="table_comment" column="table_id"/>
+        <result property="sub_table_name" column="table_id"/>
+        <result property="sub_table_fk_name" column="table_id"/>
+        <result property="class_name" column="table_id"/>
+        <result property="tpl_category" column="table_id"/>
+        <result property="package_name" column="table_id"/>
+        <result property="module_name" column="table_id"/>
+        <result property="business_name" column="table_id"/>
+        <result property="function_name" column="table_id"/>
+        <result property="function_author" column="table_id"/>
+        <result property="gen_type" column="table_id"/>
+        <result property="gen_path" column="table_id"/>
+        <result property="options" column="table_id"/>
+        <result property="create_by" column="table_id"/>
+        <result property="create_time" column="table_id"/>
+        <result property="update_by" column="table_id"/>
+        <result property="update_time" column="table_id"/>
+        <result property="remark" column="table_id"/>
+        <collection property="columns" javaType = "java.util.List" resultMap="GenTableColumnResult"/>
+
+    </resultMap>
+
+    <sql id ="selectGenTableVo">
+        select table_id, table_name, table_comment, sub_table_name, sub_table_fk_name,
+         class_name, tpl_category, package_name, module_name, business_name, function_name,
+         function_author, gen_type, gen_path, options, create_by, create_time, update_by, update_time, remark from gen_table
+    </sql>
+
+
+    <select id = "selectGenTableList" parameterType="GenTable" resultMap="GenTableResult">
+      <include refid="selectGenTableVo"/>
+        <where>
+        <if test="tableName != null and tableName != ''">
+            and lower(table_name)like lower (concat('%',#{tableName },'%'))
+        </if>
+        </where>
+    </select>
+
+
+</mapper>
